@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Menu} from 'semantic-ui-react'
+import {
+        Menu,
+       } from 'semantic-ui-react'
 
 
 
@@ -11,9 +13,9 @@ export default class MenuExampleHeader extends Component {
 
   render() {
     const { activeItem } = this.state
-
+//Make sign in conditional on existing sessions
     return (
-      //Make sign in conditional on existing sessions
+            
       <Menu inverted >
         <Menu.Item header as='h3' >Edify Bridge</Menu.Item>
         <Menu.Item
@@ -40,7 +42,11 @@ export default class MenuExampleHeader extends Component {
         />
       </Menu>
       
-      
+     
+             
+                
     )
   }
  }
+
+
