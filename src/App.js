@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import {Menu} from 'semantic-ui-react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+
+export default class MenuExampleHeader extends Component {
+  state = {}
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
+    return (
+      //Make sign in conditional on existing sessions
+      <Menu inverted >
+        <Menu.Item header as='h3' >Edify Bridge</Menu.Item>
+        <Menu.Item
+          name='Classes'
+          active={activeItem === 'Classes'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='Tutors'
+          active={activeItem === 'Tutors'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='Contact us'
+          active={activeItem === 'Contact us'}
+          onClick={this.handleItemClick}
+        />
+        
+        <Menu.Item
+           
+          name='Sign in'
+          active={activeItem === 'Sign in'}
+          onClick={this.handleItemClick}
+        />
+      </Menu>
+      
+      
+    )
+  }
+ }
