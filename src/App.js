@@ -14,8 +14,8 @@ export default class MenuExampleHeader extends Component {
 
     return (
       //Make sign in conditional on existing sessions
-      <Menu>
-        <Menu.Item header>Edify Bridge</Menu.Item>
+      <Menu inverted >
+        <Menu.Item header as='h3' >Edify Bridge</Menu.Item>
         <Menu.Item
           name='Classes'
           active={activeItem === 'Classes'}
@@ -33,6 +33,7 @@ export default class MenuExampleHeader extends Component {
         />
         
         <Menu.Item
+           
           name='Sign in'
           active={activeItem === 'Sign in'}
           onClick={this.handleItemClick}
