@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import {
         Menu,
+        Button,
+        Form,
+        Input
        } from 'semantic-ui-react'
 
 
@@ -48,5 +51,23 @@ export default class MenuExampleHeader extends Component {
     )
   }
  }
+ class MyComponent extends React.Component {
+  render() {
+    return (
+      <Form>
+        <Form.Field>
+          <label htmlFor="name">Name</label>
+          <Input name="name" />
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="email">Email</label>
+          <Input name="email" />
+        </Form.Field>
+        <Button primary>Submit</Button>
+      </Form>
+    );
+  }
+}
+
 
 
