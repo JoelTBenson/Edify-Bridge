@@ -15,7 +15,7 @@ const classSchema = new Schema({
         minlength: 1,
         maxlength: 256,
         trim: true,
-    }
+    },
     classInstructor: {
         type: Schema.Types.ObjectID,
         ref: 'Trainer',
