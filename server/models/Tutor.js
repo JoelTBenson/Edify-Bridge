@@ -12,6 +12,10 @@ const tutorSchema = new Schema({
         type: Schema.Type.ObjectID,
         ref: 'Trainer',
     },
+    tutorLocation: {
+        type: String,
+        required: false,
+    },
     tutorDateTimeStart: {
         type: Date,
         default: Date.now,
