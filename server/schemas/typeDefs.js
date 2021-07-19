@@ -15,6 +15,7 @@ const typeDefs = gql`
     _id: ID
     tutorTitle: String
     tutorTrainer: Trainer
+    tutorLocation: String
     tutorDateTimeStart: Date
     tutorDateTimeEnd: Date
   }
@@ -65,6 +66,16 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addClass(classId: ID!, classTitle: String!, classDescription: String!, classInstructor: Trainer: ID!, classLocation: String, classDateTimeStart: Date, classDateTimeEnd: Date)
+    addTutor(tutorId: ID!, tutorTitle: String!, tutorInstructor: Trainer: ID!, tutorLocation: String, tutorDateTimeStart: Date, tutorDateTimeEnd: Date)
+    addProgram(programId: ID!, programTitle: String!, programDescription: String!, programInstructor: Trainer: ID!, programDateTimeStart: Date, programDateTimeEnd: Date)
+    addClassPrereq(classId: ID!, prereqId: ID!)
+    addProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!)
+    removeClass(classId: ID!)
+    removeTutor(classId: ID!)
+    removeProgram(classId: ID!)
+    removeClassPrereq(classId: ID!, prereqId: ID!)
+    removeProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!)
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
