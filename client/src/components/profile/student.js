@@ -4,13 +4,15 @@ import React from "react";
 
 export default class student extends React.Component{
     render(){
-        return(
-            <h1 className="name"></h1>
-            <div>
-           <ul>
-               <li>completed course</li>
-               <li></li>
-               
+        return( 
+            <section>
+            <h1>student</h1>
+            <h3>completed courses</h3>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+           </section>
         )
-}
+    }
 }
