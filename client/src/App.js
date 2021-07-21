@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, NavLink } from 'react';
 import './App.css';
 import {
         Menu,
-        Button,
-        Form,
-        Input
+      
        } from 'semantic-ui-react'
+   
+
 
 
 
@@ -19,9 +19,10 @@ export default class MenuExampleHeader extends Component {
 //Make sign in conditional on existing sessions
     return (
             
-      <Menu inverted >
-        <Menu.Item header as='h3' >Edify Bridge</Menu.Item>
-        <Menu.Item
+      <Menu inverted massive>
+        <Menu.Item  header as='h3' >Edify Bridge</Menu.Item>
+        <Menu.Item    
+          
           name='Classes'
           active={activeItem === 'Classes'}
           onClick={this.handleItemClick}
@@ -37,8 +38,9 @@ export default class MenuExampleHeader extends Component {
           onClick={this.handleItemClick}
         />
         
-        <Menu.Item
-           
+        <Menu.Item 
+
+           as={NavLink} to='Signin'
           name='Sign in'
           active={activeItem === 'Sign in'}
           onClick={this.handleItemClick}
@@ -51,23 +53,5 @@ export default class MenuExampleHeader extends Component {
     )
   }
  }
- class MyComponent extends React.Component {
-  render() {
-    return (
-      <Form>
-        <Form.Field>
-          <label htmlFor="name">Name</label>
-          <Input name="name" />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="email">Email</label>
-          <Input name="email" />
-        </Form.Field>
-        <Button primary>Submit</Button>
-      </Form>
-    );
-  }
-}
-
 
 

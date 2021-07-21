@@ -13,9 +13,9 @@ const programSchema = new Schema({
         maxlength: 256,
         trim: true,
     },
-    programTrainer: {
+    programTutor: {
         type: Schema.Types.ObjectId,
-        ref: 'Trainer',
+        ref: 'Tutor',
     },
     programClasses: [
         {

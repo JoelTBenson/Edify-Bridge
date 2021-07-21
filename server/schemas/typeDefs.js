@@ -4,45 +4,32 @@ const typeDefs = gql`
   type Class {
     _id: ID
     classTitle: String
-    classDescription:
-    classInstructor: Trainer
+    classDescription: String
+    classInstructor: Tutor
     classLocation: String
-    classDateTimeStart: Date
-    classDateTimeEnd: Date
     classPrereqs: [Class]!
   }
+
   type Tutor {
     _id: ID
     tutorTitle: String
-    tutorTrainer: Trainer
     tutorLocation: String
-    tutorDateTimeStart: Date
-    tutorDateTimeEnd: Date
   }
+
   type Program {
     programTitle: String
     programDescription: String
-    programTrainer: Trainer
+    programTrainer: Tutor
     programClasses: [Class]!
-    programDateTimeStart: Date
-    programDateTimeEnd: Date
     programClassPrereqs: [Class]!
     programProgramPrereqs: [Program]!
   }
+
   type User {
     _id: ID
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
-  }
-
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
   }
 
   type Comment {
@@ -58,30 +45,30 @@ const typeDefs = gql`
   }
 
   type Query {
+    class: Class
+    classes: [Class]
+    tutor: Tutor
+    tutors: [Tutor]
+    program: Program
+    programs: [Program]
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
     me: User
   }
 
   type Mutation {
-    addClass(classId: ID!, classTitle: String!, classDescription: String!, classInstructor: Trainer: ID!, classLocation: String, classDateTimeStart: Date, classDateTimeEnd: Date)
-    addTutor(tutorId: ID!, tutorTitle: String!, tutorInstructor: Trainer: ID!, tutorLocation: String, tutorDateTimeStart: Date, tutorDateTimeEnd: Date)
-    addProgram(programId: ID!, programTitle: String!, programDescription: String!, programInstructor: Trainer: ID!, programDateTimeStart: Date, programDateTimeEnd: Date)
-    addClassPrereq(classId: ID!, prereqId: ID!)
-    addProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!)
-    removeClass(classId: ID!)
-    removeTutor(classId: ID!)
-    removeProgram(classId: ID!)
-    removeClassPrereq(classId: ID!, prereqId: ID!)
-    removeProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!)
+    addClass(classId: ID!, classTitle: String!, classDescription: String!, classInstructor: ID!, classLocation: String): Class
+    addTutor(tutorId: ID!, tutorTitle: String!, tutorInstructor: String!, tutorLocation: String): Tutor
+    addProgram(programId: ID!, programTitle: String!, programDescription: String!, programInstructor: String!, programTutor: ID!): Program
+    addClassPrereq(classId: ID!, prereqId: ID!): Program
+    addProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!): Program
+    removeClass(classId: ID!): Class
+    removeTutor(classId: ID!): Tutor
+    removeProgram(classId: ID!): Program
+    removeClassPrereq(classId: ID!, prereqId: ID!): Class
+    removeProgramPrereq(recordId: ID!, isClass: Boolean, prereqId: ID!): Program
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 
