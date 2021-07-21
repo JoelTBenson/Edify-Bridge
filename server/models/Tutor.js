@@ -8,10 +8,6 @@ const tutorSchema = new Schema({
         maxlength: 100,
         trim: true,
     },
-    tutorTrainer: {
-        type: Schema.Type.ObjectID,
-        ref: 'Trainer',
-    },
     tutorLocation: {
         type: String,
         required: false,

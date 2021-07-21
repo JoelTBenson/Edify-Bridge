@@ -18,7 +18,7 @@ const classSchema = new Schema({
     },
     classInstructor: {
         type: Schema.Types.ObjectID,
-        ref: 'Trainer',
+        ref: 'Tutor',
     },
     classLocation: {
         type: String,
