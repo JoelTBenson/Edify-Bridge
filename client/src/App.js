@@ -1,57 +1,38 @@
-import React, { Component, NavLink } from 'react';
-import './App.css';
-import {
-        Menu,
-      
-       } from 'semantic-ui-react'
-   
+import React from "react";
+import { Router, Route, Switch } from 'react-router-dom'; 
+import { ApolloProvider } from '@apollo/client';
+import { client } from './config/apollo';
 
+// history
+import history from './config/history';
 
+// bring in components
+import Header from "./components/Header";
 
+// bring in pages
+import Home from "./pages/Home";
+import Classes from './pages/Classes';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Trainers from './pages/Trainers';
+import Navbar from "./components/Navbar";
 
-export default class MenuExampleHeader extends Component {
-  state = {}
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Router history={history}>
+        <Header />
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/trainers" component={Trainers} />
+          <Route exact path="/classes" component={Classes} />
+        </Switch>
+      </Router>
+    </ApolloProvider>
+  );
+}
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-//Make sign in conditional on existing sessions
-    return (
-            
-      <Menu inverted massive>
-        <Menu.Item  header as='h3' >Edify Bridge</Menu.Item>
-        <Menu.Item    
-          
-          name='Classes'
-          active={activeItem === 'Classes'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='Tutors'
-          active={activeItem === 'Tutors'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='Contact us'
-          active={activeItem === 'Contact us'}
-          onClick={this.handleItemClick}
-        />
-        
-        <Menu.Item 
-
-           as={NavLink} to='Signin'
-          name='Sign in'
-          active={activeItem === 'Sign in'}
-          onClick={this.handleItemClick}
-        />
-      </Menu>
-      
-     
-             
-                
-    )
-  }
- }
-
-
+export default App;
