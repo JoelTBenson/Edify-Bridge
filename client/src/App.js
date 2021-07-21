@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 import Classes from './pages/Classes';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Trainers from './pages/Trainers';
+import Tutors from './pages/Tutors';
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/trainers" component={Trainers} />
+          <Route exact path="/tutors" component={Tutors} />
           <Route exact path="/classes" component={Classes} />
         </Switch>
       </Router>
